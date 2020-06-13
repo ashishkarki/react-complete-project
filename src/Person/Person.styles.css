@@ -1,0 +1,20 @@
+button {
+  padding: 7px 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 3px green groove;
+}
+
+button:hover {
+  background-color: bisque;
+}
+
+.person-container {
+  margin: 10px 50px;
+  padding: 10px 10px;
+  border: 2px solid burlywood;
+  box-shadow: 5px 2px lightcoral;
+  font-style: oblique;
+  color: blueviolet;
+  text-shadow: 1px 1px aquamarine;
+}
