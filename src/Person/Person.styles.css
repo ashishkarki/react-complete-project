@@ -1,15 +1,29 @@
+.Person {
+  width:  60%;
+  margin: 10px auto;
+  border:  2px solid blanchedalmond;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 5px 2px 6px rgb(228, 189, 189);
+}
+
+input {
+  border: 1px dashed brown;
+  background-color: antiquewhite;
+}
+
 button {
   padding: 7px 10px;
   font-size: 1.1rem;
-  font-weight: bold;
-  border: 3px green groove;
+  font-weight: 500;
+  border: 10px lightgreen groove;
 }
 
 button:hover {
   background-color: bisque;
 }
 
-.person-container {
+/* .person-container {
   margin: 10px 50px;
   padding: 10px 10px;
   border: 2px solid burlywood;
@@ -17,4 +31,4 @@ button:hover {
   font-style: oblique;
   color: blueviolet;
   text-shadow: 1px 1px aquamarine;
-}
+} */
