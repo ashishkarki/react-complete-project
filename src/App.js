@@ -36,12 +36,21 @@ class App extends Component
 
   render ()
   {
+
+    const buttonStyle = {
+      backgroundColor: 'lightblue',
+      font: 'inherit',
+      border: '5px groove aquamarine',
+      padding: '8px',
+      cursor: 'pointer',
+    }
+
     return (
       <div className='App'>
         <h1>Hello from ashish</h1>
         <p style={ { color: 'red' } }>Another element within root app</p>
 
-        <button onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) }>Switch Name</button>
+        <button onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
 
         { this.state.persons.map( ( value, index ) => (
           <Person
