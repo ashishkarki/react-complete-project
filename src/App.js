@@ -23,9 +23,10 @@ class App extends Component {
   }
 
   deletePersonHandler = ( personIndex ) => {
-    console.log( `event in deletePersonHandler is ${ personIndex }` )
-    this.state.persons.splice( personIndex, 1 )
-    this.setState( { persons: this.state.persons } )
+    //const tempPersons = this.state.persons.slice() // returns a copy
+    const tempPersons = [ ...this.state.persons ]
+    tempPersons.splice( personIndex, 1 )
+    this.setState( { persons: tempPersons } )
   }
 
   nameChangedHandler = ( event ) => {
