@@ -2,19 +2,17 @@ import React, { Component } from 'react'
 import './App.css'
 import Person from './Person/Person.component'
 
-class App extends Component
-{
+class App extends Component {
   state = {
     persons: [
       { name: 'Ashish', age: 34 },
       { name: 'Puppy', age: 26 },
       { name: 'Puplet', age: 1 },
     ],
-    showPersonDiv: false,
+    showPersonDiv: true,
   }
 
-  switchPersonInfoHandler = ( someName ) =>
-  {
+  switchPersonInfoHandler = ( someName ) => {
     this.setState( {
       persons: [
         { name: someName, age: 34 },
@@ -24,8 +22,13 @@ class App extends Component
     } )
   }
 
-  nameChangedHandler = ( event ) =>
-  {
+  deletePersonHandler = ( personIndex ) => {
+    console.log( `event in deletePersonHandler is ${ personIndex }` )
+    this.state.persons.splice( personIndex, 1 )
+    this.setState( { persons: this.state.persons } )
+  }
+
+  nameChangedHandler = ( event ) => {
     this.setState( {
       persons: [
         { name: event.target.value, age: 54 },
@@ -35,15 +38,14 @@ class App extends Component
     } )
   }
 
-  togglePersonHandler = ( event ) =>
-  {
+  togglePersonHandler = ( _ ) => {
     this.setState( {
       showPersonDiv: !this.state.showPersonDiv,
     } )
   }
 
-  render ()
-  {
+  render () {
+    console.log( 'render called in App.js' )
 
     const buttonStyle = {
       backgroundColor: 'lightblue',
@@ -52,6 +54,28 @@ class App extends Component
       padding: '8px',
       cursor: 'pointer',
       margin: '6px 10px'
+    }
+
+    let personDiv = null
+
+    console.log( `personDiv is ${ personDiv }` )
+
+
+    if ( this.state.showPersonDiv ) {
+      personDiv = (
+        <div>
+          { this.state.persons.map( ( person, index ) => (
+            <Person
+              name={ person.name }
+              age={ person.age }
+              key={ index }
+              clicked={ ( _ ) => this.switchPersonInfoHandler( 'Fancy Ashish' ) }
+              deleteClicked={ () => this.deletePersonHandler( index ) }
+              changed={ this.nameChangedHandler }
+            />
+          ) ) }
+        </div>
+      )
     }
 
     return (
@@ -63,20 +87,9 @@ class App extends Component
 
         <button style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
 
-        // refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
-        { this.state.showPersonDiv ?
-          <div>
-            { this.state.persons.map( ( value, index ) => (
-              <Person
-                name={ value.name }
-                age={ value.age }
-                key={ index }
-                click={ ( _ ) => this.switchPersonInfoHandler( 'Fancy Ashish' ) }
-                changed={ this.nameChangedHandler }
-              />
-            ) ) }
-          </div> : null
-        }
+        {/* refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
+        */}
+        { personDiv }
       </div>
     )
     // return React.createElement(
