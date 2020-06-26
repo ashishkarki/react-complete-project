@@ -19,7 +19,7 @@ const person = ( props ) => {
         { props.children && <strong>. Children are: { props.children }</strong> }
       </p>
 
-      <input type="text" onChange={ props.changed } value={ props.name } />
+      <input type="text" onChange={ props.inputChanged } value={ props.name } />
 
       <button style={ deleteButtonStyle } onClick={ props.deleteClicked }>Delete Me</button>
     </div>
