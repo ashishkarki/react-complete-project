@@ -10,6 +10,7 @@ class App extends Component
       { name: 'Puppy', age: 26 },
       { name: 'Puplet', age: 1 },
     ],
+    showPersonDiv: false,
   }
 
   switchPersonInfoHandler = ( someName ) =>
@@ -34,6 +35,13 @@ class App extends Component
     } )
   }
 
+  togglePersonHandler = ( event ) =>
+  {
+    this.setState( {
+      showPersonDiv: !this.state.showPersonDiv,
+    } )
+  }
+
   render ()
   {
 
@@ -43,6 +51,7 @@ class App extends Component
       border: '5px groove aquamarine',
       padding: '8px',
       cursor: 'pointer',
+      margin: '6px 10px'
     }
 
     return (
@@ -52,15 +61,22 @@ class App extends Component
 
         <button onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
 
-        { this.state.persons.map( ( value, index ) => (
-          <Person
-            name={ value.name }
-            age={ value.age }
-            key={ index }
-            click={ ( _ ) => this.switchPersonInfoHandler( 'Fancy Ashish' ) }
-            changed={ this.nameChangedHandler }
-          />
-        ) ) }
+        <button style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
+
+        // refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
+        { this.state.showPersonDiv ?
+          <div>
+            { this.state.persons.map( ( value, index ) => (
+              <Person
+                name={ value.name }
+                age={ value.age }
+                key={ index }
+                click={ ( _ ) => this.switchPersonInfoHandler( 'Fancy Ashish' ) }
+                changed={ this.nameChangedHandler }
+              />
+            ) ) }
+          </div> : null
+        }
       </div>
     )
     // return React.createElement(
