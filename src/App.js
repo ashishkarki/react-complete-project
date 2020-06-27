@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Radium from 'radium'
+
 import './App.css'
 import Person from './Person/Person.component'
 
@@ -54,12 +56,16 @@ class App extends Component {
     console.log( 'render called in App.js' )
 
     const buttonStyle = {
-      backgroundColor: 'lightblue',
+      backgroundColor: 'lightgreen',
       font: 'inherit',
       border: '5px groove aquamarine',
       padding: '8px',
       cursor: 'pointer',
-      margin: '6px 10px'
+      margin: '6px 10px',
+      ':hover': {
+        backgroundColor: 'skyblue',
+        color: 'brown',
+      }
     }
 
     let personDiv = null
@@ -82,16 +88,30 @@ class App extends Component {
           ) ) }
         </div>
       )
+
+      buttonStyle.backgroundColor = 'lightpink'
+      buttonStyle[ ':hover' ] = {
+        backgroundColor: 'ghostwhite',
+        color: 'black'
+      }
+    }
+
+    const classes = []
+    if ( this.state.persons.length <= 2 ) {
+      classes.push( 'red' )
+    }
+    if ( this.state.persons.length <= 1 ) {
+      classes.push( 'bold' )
     }
 
     return (
       <div className='App'>
         <h1>Hello from ashish</h1>
-        <p style={ { color: 'red' } }>Another element within root app</p>
+        <p className={ classes.join( ' ' ) }>Another element within root app</p>
 
-        <button onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
+        <button key={ 111 } onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
 
-        <button style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
+        <button key={ 222 } style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
 
         {/* refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
         */}
@@ -106,4 +126,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Radium( App )
