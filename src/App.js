@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Radium from 'radium'
+import Radium, { StyleRoot } from 'radium'
 
 import './App.css'
 import Person from './Person/Person.component'
@@ -53,8 +53,6 @@ class App extends Component {
   }
 
   render () {
-    console.log( 'render called in App.js' )
-
     const buttonStyle = {
       backgroundColor: 'lightgreen',
       font: 'inherit',
@@ -69,9 +67,6 @@ class App extends Component {
     }
 
     let personDiv = null
-
-    console.log( `personDiv is ${ personDiv }` )
-
 
     if ( this.state.showPersonDiv ) {
       personDiv = (
@@ -105,18 +100,20 @@ class App extends Component {
     }
 
     return (
-      <div className='App'>
-        <h1>Hello from ashish</h1>
-        <p className={ classes.join( ' ' ) }>Another element within root app</p>
+      <StyleRoot>
+        <div className='App'>
+          <h1>Hello from ashish</h1>
+          <p className={ classes.join( ' ' ) }>Another element within root app</p>
 
-        <button key={ 111 } onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
+          <button key={ 111 } onClick={ this.switchPersonInfoHandler.bind( this, 'Dancy Ashish' ) } style={ buttonStyle }>Switch Name</button>
 
-        <button key={ 222 } style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
+          <button key={ 222 } style={ buttonStyle } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
 
-        {/* refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
+          {/* refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
         */}
-        { personDiv }
-      </div>
+          { personDiv }
+        </div>
+      </StyleRoot>
     )
     // return React.createElement(
     //   'div',
