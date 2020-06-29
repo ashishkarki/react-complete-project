@@ -1,3 +1,5 @@
+/* 
+// can comment these out for example if we are using styled-components
 .Person {
   width:  60%;
   margin: 10px auto;
@@ -6,6 +8,12 @@
   text-align: center;
   box-shadow: 5px 2px 6px rgb(228, 189, 189);
 }
+
+@media (min-width: 700px) {
+  .Person {
+    background-color: blanchedalmond;
+  }
+} */
 
 input {
   border: 1px dashed brown;
@@ -25,8 +33,3 @@ button:hover {
   background-color: bisque;
 }
 
-/* @media (min-width: 700px) {
-  .Person {
-    background-color: blanchedalmond;
-  }
-} */
