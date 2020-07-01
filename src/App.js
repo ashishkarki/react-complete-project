@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import classes from './App.css'
 import Person from './Person/Person.component'
+import ErrorBoundary from './ErrorBoundary/error-boundary.component'
 
 class App extends Component {
   state = {
@@ -58,14 +59,15 @@ class App extends Component {
       personDiv = (
         <div>
           { this.state.persons.map((person, index) => (
-            <Person
-              name={ person.name }
-              age={ person.age }
-              key={ person.id }
-              clicked={ (_) => this.switchPersonInfoHandler('Fancy Ashish') }
-              deleteClicked={ () => this.deletePersonHandler(index) }
-              inputChanged={ (event) => this.nameChangedHandler(event, person.id) }
-            />
+            <ErrorBoundary key={ person.id }>
+              <Person
+                name={ person.name }
+                age={ person.age }
+                clicked={ (_) => this.switchPersonInfoHandler('Fancy Ashish') }
+                deleteClicked={ () => this.deletePersonHandler(index) }
+                inputChanged={ (event) => this.nameChangedHandler(event, person.id) }
+              />
+            </ErrorBoundary>
           )) }
         </div>
       )
