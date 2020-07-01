@@ -1,10 +1,8 @@
-/* 
-// can comment these out for example if we are using styled-components
 .Person {
-  width:  60%;
-  margin: 10px auto;
-  border:  2px solid blanchedalmond;
-  padding: 12px;
+  width     : 60%;
+  margin    : 10px auto;
+  border    : 2px solid blanchedalmond;
+  padding   : 12px;
   text-align: center;
   box-shadow: 5px 2px 6px rgb(228, 189, 189);
 }
@@ -13,23 +11,22 @@
   .Person {
     background-color: blanchedalmond;
   }
-} */
+}
 
 input {
-  border: 1px dashed brown;
+  border          : 1px dashed brown;
   background-color: antiquewhite;
-  padding: 5px;
-  text-align: center;
+  padding         : 5px;
+  text-align      : center;
 }
 
 button {
-  padding: 7px 10px;
-  font-size: 1.1rem;
+  padding    : 7px 10px;
+  font-size  : 1.1rem;
   font-weight: 500;
-  border: 10px rgb(100, 238, 100) groove;
+  border     : 10px rgb(100, 238, 100) groove;
 }
 
 button:hover {
   background-color: bisque;
 }
-
