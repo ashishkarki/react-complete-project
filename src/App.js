@@ -1,22 +1,7 @@
 import React, { Component } from 'react'
-//import Radium, { StyleRoot } from 'radium'
-import styled from 'styled-components'
 
-import './App.css'
+import classes from './App.css'
 import Person from './Person/Person.component'
-
-const StyledButton = styled.button`
-  background-color: ${props => props.buttonWhenPersonDisplayed ? 'lightpink' : 'lightgreen' };
-  font: inherit;
-  border: 5px groove aquamarine;
-  padding: 8px;
-  cursor: pointer;
-  margin: 6px 10px;
-  &:hover {
-    background-color: ${props => props.buttonWhenPersonDisplayed ? 'Aquamarine' : 'skyblue' };
-    color: brown;
-  }
-`
 
 class App extends Component {
   state = {
@@ -39,7 +24,6 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    //const tempPersons = this.state.persons.slice() // returns a copy
     const tempPersons = [ ...this.state.persons ]
     tempPersons.splice(personIndex, 1)
     this.setState({ persons: tempPersons })
@@ -67,20 +51,8 @@ class App extends Component {
   }
 
   render() {
-    // const buttonStyle = {
-    //   backgroundColor: 'lightgreen',
-    //   font: 'inherit',
-    //   border: '5px groove aquamarine',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   margin: '6px 10px',
-    //   ':hover': {
-    //     backgroundColor: 'skyblue',
-    //     color: 'brown',
-    //   }
-    // }
-
     let personDiv = null
+    const btnClasses = [ classes.Button ]
 
     if (this.state.showPersonDiv) {
       personDiv = (
@@ -98,46 +70,29 @@ class App extends Component {
         </div>
       )
 
-      // buttonStyle.backgroundColor = 'lightpink'
-      // buttonStyle[ ':hover' ] = {
-      //   backgroundColor: 'ghostwhite',
-      //   color: 'black'
-      // }
-      // USING STYLED COMPONENTS
+      btnClasses.push(classes.Red)
     }
 
-    const classes = []
+    const assignedClasses = []
     if (this.state.persons.length <= 2) {
-      classes.push('red')
+      assignedClasses.push(classes.red)
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold')
+      assignedClasses.push(classes.bold)
     }
 
     return (
-      //<StyleRoot>
-      <div className='App'>
+      <div className={ classes.App }>
         <h1>Hello from ashish</h1>
-        <p className={ classes.join(' ') }>Another element within root app</p>
+        <p className={ assignedClasses.join(' ') }>Another element within root app</p>
 
-        <StyledButton key={ 111 } onClick={ this.switchPersonInfoHandler.bind(this, 'Dancy Ashish') } >Switch Name</StyledButton>
-        {/* style={ buttonStyle } */ }
+        <button className={ btnClasses.join(' ') } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
+        {/* buttonWhenPersonDisplayed={ this.state.showPersonDiv }  */ }
 
-        <StyledButton key={ 222 } buttonWhenPersonDisplayed={ this.state.showPersonDiv } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</StyledButton>
-
-        {/* refer to https://react-cn.github.io/react/tips/if-else-in-JSX.html
-        */}
         { personDiv }
       </div>
-      //</StyleRoot>
     )
-    // return React.createElement(
-    //   'div',
-    //   { className: 'App' },
-    //   React.createElement('h1', null, "Hi, I'm a React App!!!")
-    // )
   }
 }
 
-// export default Radium( App )
 export default App

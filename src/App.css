@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+.Button {
+  background-color: lightgreen;
+  font            : inherit;
+  border          : 5px groove aquamarine;
+  padding         : 8px;
+  cursor          : pointer;
+  margin          : 6px 10px;
+}
+
+.Button:hover {
+  background-color: skyblue;
+  color           : brown;
+}
+
+.Button.Red {
+  background-color: red;
+}
+
+.Button.Red:hover {
+  background-color: salmon;
+}
+
 .red {
   color: red;
 }
