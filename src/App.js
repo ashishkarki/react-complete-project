@@ -52,7 +52,7 @@ class App extends Component {
 
   render() {
     let personDiv = null
-    const btnClasses = [ classes.Button ]
+    let btnClasses = ''
 
     if (this.state.showPersonDiv) {
       personDiv = (
@@ -70,7 +70,7 @@ class App extends Component {
         </div>
       )
 
-      btnClasses.push(classes.Red)
+      btnClasses = classes.Red
     }
 
     const assignedClasses = []
@@ -86,8 +86,7 @@ class App extends Component {
         <h1>Hello from ashish</h1>
         <p className={ assignedClasses.join(' ') }>Another element within root app</p>
 
-        <button className={ btnClasses.join(' ') } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
-        {/* buttonWhenPersonDisplayed={ this.state.showPersonDiv }  */ }
+        <button className={ btnClasses } onClick={ this.togglePersonHandler }> { this.state.showPersonDiv ? 'Hide' : 'Show' } Person Div</button>
 
         { personDiv }
       </div>
